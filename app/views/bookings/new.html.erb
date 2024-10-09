@@ -1,0 +1,35 @@
+<h1>Book Your Gym Membership</h1>
+
+<%= form_with model: @booking, url: bookings_path, method: :post, local: true do |f| %>
+  <div class="form-group">
+    <label>Select Membership Duration</label>
+    <%= f.select :membership_duration, options_for_select([['1 Month', '1'], ['3 Months', '3'], ['6 Months', '6'], ['12 Months', '12']]), {}, class: 'form-control', id: 'membership_duration' %>
+  </div>
+
+  <div class="form-group">
+    <label>Select Start Date</label>
+    <%= f.date_field :start_date, class: 'form-control', id: 'start_date', placeholder: 'Select start date' %>
+  </div>
+
+  <div class="form-group">
+    <label>End Date</label>
+    <%= f.date_field :end_date, class: 'form-control', id: 'end_date', placeholder: 'End date will be calculated', readonly: true %>
+  </div>
+
+  <div class="form-group">
+    <label>Full Name</label>
+    <%= f.text_field :full_name, class: 'form-control', placeholder: 'Enter your full name' %>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
+  </div>
+
+  <div class="form-group">
+    <label>Contact</label>
+    <%= f.text_field :contact, class: 'form-control', placeholder: 'Contact number' %>
+  </div>
+
+  <%= f.submit 'Book Membership', class: 'btn btn-primary' %>
+<% end %>
